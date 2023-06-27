@@ -18,7 +18,7 @@ public class CharController {
     private final ChatRepository chatRepository;
 
     // 귓속말 할 때 사용!
-   /* @CrossOrigin
+    /*@CrossOrigin
     // MediaType.TEXT_EVENT_STREAM_VALUE : SSE Protocl기능! ( 요청이 와서 응답을 보내도, 응답 channel은 끊지 않고 계속해서 응답 channel로 데이터를 보낼 수 있게 해줌)
     @GetMapping(value = "/sender/{sender}/receiver/{receiver}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Chat> getMessage(@PathVariable String sender,@PathVariable String receiver){
@@ -38,8 +38,8 @@ public class CharController {
 
     }
 
-
-    @PostMapping("/chat")
+    @CrossOrigin
+    @PostMapping("/chat") // 웹에서 보낸 메시지를 db에 저장한다.(저장만 하고, FLUX 되지는 X)
     public Mono<Chat> setMsg(@RequestBody Chat chat) {
 
         chat.setCreatedAt(LocalDateTime.now());
@@ -47,15 +47,16 @@ public class CharController {
 
     }
 
-
-   /* @CrossOrigin
+/* @CrossOrigin
     @PostMapping("/chat")
     public void setMsg(@RequestBody Chat chat) {
 
         chat.setCreatedAt(LocalDateTime.now());
         chatRepository.save(chat); // Spring Data가 자동으로 SAVE()를 이미 구현해 놓았다.
 
+
     }*/
+
 
 
 
