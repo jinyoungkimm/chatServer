@@ -4,9 +4,23 @@ spring:
       host: localhost
       port: 27017
       database: chatdb
-      # uri : mongodb : //localhost:27017//chatdb
+      # uri : mongodb : //localhost:27017/chatdb
   output:
     ansi:
       enabled: always
 
+  mvc:
+    static-locations: /resources/**
 
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
+
+  port: 8089

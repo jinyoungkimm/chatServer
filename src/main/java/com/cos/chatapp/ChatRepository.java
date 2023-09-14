@@ -29,7 +29,7 @@ public interface ChatRepository extends ReactiveMongoRepository<Chat,String> {
     // 더이상 귓속말 기능이 아니라, [채팅방]을 매개체로 송/수신자가 대화를 할 것이며, 채팅방 번호에 해당하는 채팅 내용(Chat Collection)을 MongoDB에서 가져 올 것이다.
     @Tailable
     @Query("{roomNum:?0}")
-    Flux<Chat> mFindByRoomNum(Integer roomNum);
+    Flux<Chat> mFindByRoomNum(String roomNum);
 
 
 }
